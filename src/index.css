@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+body {
+  font-family: ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  background: #0a0814;
+}
+
+/* preview blobs — same motion as the exported CSS */
+.aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  translate: -50% -50%;
+  animation: aurora-drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-drift {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  50% { transform: translate(var(--dx), calc(var(--dy) * -1)) scale(1.2) rotate(60deg); }
+  100% { transform: translate(calc(var(--dx) * -0.6), var(--dy)) scale(0.9) rotate(-30deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob { animation: none; }
+}
